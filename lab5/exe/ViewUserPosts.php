@@ -1,11 +1,15 @@
 <?php
-$mysqli = new mysqli("mysql.ecs.ku.edu","j567z112"," i-ngai3oH​","j567z112");
-$user =$_POST['choice']
+$mysqli = new mysqli("mysql.eecs.ku.edu", "j567z112", "i-ngai3oH", "j567z112");
+
+/* check connection */
 if ($mysqli->connect_errno) {
     printf("Connect failed: %s\n", $mysqli->connect_error);
     exit();
 }
-$post ="select content from Posts where author_id ='$user'";
+$user =$_POST['choice'];
+
+$post ="select content from Posts where author_id = $user";
+
 echo "<table>";
 echo "<tr>";
 echo "<th>Posts</th>";

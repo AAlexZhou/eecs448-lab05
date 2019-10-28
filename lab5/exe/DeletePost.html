@@ -4,13 +4,15 @@
     <title>DeletePost</title>
   </head>
   <body>
-    <form action="DeletePost.php.php" method="post">
+    <form action="DeletePost.php" method="post">
       <?php
-      $mysqli = new mysqli("mysql.ecs.ku.edu","j567z112"," i-ngai3oH​","j567z112");
+      $mysqli = new mysqli("mysql.eecs.ku.edu", "j567z112", "i-ngai3oH", "j567z112");
+
+      /* check connection */
       if ($mysqli->connect_errno) {
-          printf("Connect failed: %s\n", $mysqli->connect_error);
-          exit();
-      }
+        printf("Connect failed: %s\n", $mysqli->connect_error);
+        exit();
+        }
       $post ="SELECT *FROM Posts";
       $result = $mysqli->query($post);
       echo "<table>";
@@ -25,7 +27,7 @@
         echo "<tr>";
         echo "<td>".$row['content']."</td>";
         echo "<td>".$username."</td>";
-        echo "<input type="checkbox" name="choice[]" value=".$username.">";
+        echo "<td><input type='checkbox' name='choice[]' value='$username'></td>";
         echo "</tr>";
       }
       echo "</table>";

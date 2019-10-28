@@ -1,16 +1,22 @@
 <?php
-$mysqli = new mysqli("mysql.ecs.ku.edu","j567z112"," i-ngai3oH​","j567z112");
-$user =$_POST['choice']
+$mysqli = new mysqli("mysql.eecs.ku.edu", "j567z112", "i-ngai3oH", "j567z112");
+
+/* check connection */
 if ($mysqli->connect_errno) {
     printf("Connect failed: %s\n", $mysqli->connect_error);
     exit();
 }
-$choice =$_POST['choice']
+
+$choice =$_POST['choice'];
 foreach ($choice as $delete)
 {
-  $quary ="delete from Posts where post_id = '$delete'";
-  echo "post id".$delete."deleted successful";
-  echo "<br>";
+  $quary ="delete from Posts where author_id = '$delete'";
+  if ($mysqli->query($quary))
+  {
+    echo "post id".$delete."deleted successful";
+    echo "<br>";
+  }
+
 }
 $mysqli->close();
  ?>
